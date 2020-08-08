@@ -8,11 +8,21 @@ The module is very simple and, so far, just allows controls for volume up, down 
 
 Volume control is handled by running the appropriate amixer command. The widget is updated instantly when volume is changed via this code, but will also update on an interval (i.e. it will reflect changes to volume made by other programs).
 
+The widget displays volume level via an icon, bar or both. The icon is permanently visible while the bar only displays when the volume is changed and will hide after a user-defined period.
+
 ## Demo
 
-Here is a screenshot from my HTPC showing the widget in the bar. The theme currently shown is called "Paper".
+Here is a screenshot from my HTPC showing the widget in the bar. The icon theme currently shown is called "Paper".
 
-![Screenshot](images/alsavolumecontrol-screenshot.png?raw=true)
+_"Icon" mode:_</br>
+![Screenshot](images/volumecontrol-icon.gif?raw=true)
+
+_"Bar" mode:_</br>
+![Screenshot](images/volumecontrol-bar.gif?raw=true)
+
+_"Both" mode:_</br>
+![Screenshot](images/volumecontrol-both.gif?raw=true)
+
 
 ## Installation
 
@@ -88,12 +98,56 @@ The widget can be customised with the following arguments:
             <td>Font size</td>
     </tr>
     <tr>
+            <td>mode</td>
+            <td>Display mode: 'icon', 'bar', 'both'.</td>
+    </tr>
+    <tr>
+            <td>hide_interval</td>
+            <td>Timeout before bar is hidden after update</td>
+    </tr>
+    <tr>
+            <td>text_format</td>
+            <td>String format</td>
+    </tr>
+    <tr>
+            <td>bar_width</td>
+            <td>Width of display bar</td>
+    </tr>
+    <tr>
+            <td>bar_colour_normal</td>
+            <td>Colour of bar in normal range</td>
+    </tr>
+    <tr>
+            <td>bar_colour_high</td>
+            <td>Colour of bar if high range</td>
+    </tr>
+    <tr>
+            <td>bar_colour_loud</td>
+            <td>Colour of bar in loud range</td>
+    </tr>
+    <tr>
+            <td>bar_colour_mute</td>
+            <td>Colour of bar if muted</td>
+    </tr>
+    <tr>
+            <td>limit_normal</td>
+            <td>Max percentage for normal range</td>
+    </tr>
+    <tr>
+            <td>limit_high</td>
+            <td>Max percentage for high range</td>
+    </tr>
+    <tr>
+            <td>limit_loud</td>
+            <td>Max percentage for loud range</td>
+    </tr>
+    <tr>
             <td>update_interval</td>
-            <td>How regularly (in seconds) to check for updates made by other programs</td>
+            <td>Interval to update widget (e.g. if changes made in other apps).</td>
     </tr>
     <tr>
             <td>theme_path</td>
-            <td>Path to icons to use.</td>
+            <td>Path to theme icons.</td>
     </tr>
 </table>
 
