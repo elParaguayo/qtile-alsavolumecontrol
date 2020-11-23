@@ -7,6 +7,7 @@ from libqtile import bar, images
 
 RE_VOL = re.compile(r"Playback\s[0-9]+\s\[([0-9]+)%\]\s\[(on|off)\]")
 
+
 class ALSAVolumeControl(object):
 
     def __init__(self, step=5, device="Master", callback=None):
@@ -31,7 +32,8 @@ class ALSAVolumeControl(object):
             self.volume = int(matched.groups()[0])
             self.muted = matched.groups()[1] == "off"
 
-        # If volume or mute status has changed then we need to trugger callbacks
+        # If volume or mute status has changed
+        # then we need to trigger callbacks
         if any([self.volume != self.oldvol, self.muted != self.oldmute]):
 
             if self.callback:
@@ -86,7 +88,8 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
         ("limit_normal", 70, "Max percentage for normal range"),
         ("limit_high", 90, "Max percentage for high range"),
         ("limit_loud", 100, "Max percentage for loud range"),
-        ("update_interval", 5, "Interval to update widget (e.g. if changes made in other apps)."),
+        ("update_interval", 5,
+            "Interval to update widget (e.g. if changes made in other apps)."),
         ("theme_path", None, "Path to theme icons.")
     ]
 
@@ -281,7 +284,8 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
             self.update_timer.cancel()
 
         # Start new timer
-        self.update_timer = self.timeout_add(self.update_interval, self.refresh)
+        self.update_timer = self.timeout_add(self.update_interval,
+                                             self.refresh)
 
     def set_hide_timer(self):
         # Cancel old timer
