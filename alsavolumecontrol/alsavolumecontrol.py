@@ -186,7 +186,7 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
             self.set_hide_timer()
 
         # Draw
-        self.draw()
+        self.bar.draw()
 
     def setup_images(self):
         # Load icons
@@ -298,4 +298,4 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
     def hide(self):
         # Hide the widget
         self.hidden = True
-        self.draw()
+        self.bar.draw()
