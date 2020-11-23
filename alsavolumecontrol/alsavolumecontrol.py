@@ -4,6 +4,7 @@ import subprocess
 from libqtile.widget import base
 from libqtile import bar, images
 
+
 RE_VOL = re.compile(r"Playback\s[0-9]+\s\[([0-9]+)%\]\s\[(on|off)\]")
 
 class ALSAVolumeControl(object):
@@ -141,9 +142,6 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
         # Start the refresh timer (to check if volume changed elsewhere)
         self.set_refresh_timer()
 
-        # Draw!
-        self.update()
-
     def max_text_width(self):
         # Calculate max width of text given defined layout
         txt_width, _ = self.drawer.max_layout_size(
@@ -185,7 +183,7 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
             self.set_hide_timer()
 
         # Draw
-        self.update()
+        self.draw()
 
     def setup_images(self):
         # Load icons
@@ -203,7 +201,7 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
             self.iconsize = img.width
             self.surfaces[name] = img.pattern
 
-    def update(self):
+    def draw(self):
         # Define an offset for x placement
         x_offset = 0
 
@@ -266,7 +264,7 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
             # Add the text to our drawer
             layout.draw(x_offset, y_offset)
 
-        self.bar.draw()
+        self.drawer.draw(offsetx=self.offset, width=self.length)
 
     def refresh(self):
         # Check the volume levels to see if they've changed
@@ -296,7 +294,4 @@ class ALSAWidget(base._Widget, base.PaddingMixin, base.MarginMixin):
     def hide(self):
         # Hide the widget
         self.hidden = True
-        self.update()
-
-    def draw(self):
-        self.drawer.draw(offsetx=self.offset, width=self.length)
+        self.draw()
